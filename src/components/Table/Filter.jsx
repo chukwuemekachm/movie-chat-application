@@ -3,22 +3,41 @@ import styled from 'styled-components';
 import { LIGHT_GREY, BRAND_WHITE, BRAND_PRIMARY } from '../../settings/_colors';
 
 const options = [
+  'All',
   'Action',
   'Adventure',
+  'Animation',
+  'Biography',
+  'Comedy',
+  'Crime',
+  'Drama',
+  'Family',
+  'Fantasy',
+  'History',
   'Horror',
+  'Music',
   'Mystery',
+  'Romance',
   'Sci-Fi',
+  'Sport',
   'Thriller',
+  'War',
 ];
 
-export default function Filter() {
+export default function Filter({ searchMovie, filterMovies }) {
+  function handleChange({ target: { value, name } }) {
+    return name === 'search'
+      ? searchMovie(value)
+      : filterMovies(value);
+  }
+
   return (
     <Filter.Wrapper>
       <Filter.InputWrapper>
-        <input />
+        <input placeholder="Search movie by title" onChange={handleChange} name="search" />
       </Filter.InputWrapper>
       <Filter.SelectWrapper>
-        <select>
+        <select onChange={handleChange} name="filter">
           {options.map(option => <option key={option} value={option}>{option}</option>)}
         </select>
       </Filter.SelectWrapper>
@@ -27,7 +46,7 @@ export default function Filter() {
 }
 
 Filter.Wrapper = styled.div`
-  width: 1040px;
+  width: 990px;
   display: flex;
   justify-content: space-between;
   padding: 20px 0px;

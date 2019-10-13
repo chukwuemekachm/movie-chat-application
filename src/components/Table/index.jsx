@@ -3,17 +3,21 @@ import styled from 'styled-components';
 import Row from './Row';
 import Filter from './Filter';
 import { withContext } from '../../hocs/Provider';
+import NavBar from './NavBar';
 
 function Table(props) {
   const { context: { _movie: { movies, searchMovieByTitle, filterMoviesByGenre } } } = props;
 
   return (
-    <Table.Wrapper>
-      <Filter searchMovie={searchMovieByTitle} filterMovies={filterMoviesByGenre} />
-      <div className="table-display">
-        {movies.map(movie => <Row {...movie} key={`${movie.title}-${movie.rating}`} />)}
-      </div>
-    </Table.Wrapper>
+    <>
+      <NavBar />
+      <Table.Wrapper>
+        <Filter searchMovie={searchMovieByTitle} filterMovies={filterMoviesByGenre} />
+        <div className="table-display">
+          {movies.map(movie => <Row {...movie} key={`${movie.title}-${movie.rating}`} />)}
+        </div>
+      </Table.Wrapper>
+    </>
   );
 }
 

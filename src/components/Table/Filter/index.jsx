@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { LIGHT_GREY, BRAND_WHITE, BRAND_PRIMARY } from '../../settings/_colors';
+import { LIGHT_GREY, BRAND_WHITE, BRAND_PRIMARY } from '../../../settings/_colors';
 
 const options = [
   'All',
@@ -75,6 +75,7 @@ Filter.InputWrapper = styled.span`
   border: 0.0015rem solid ${LIGHT_GREY};
   padding: 0.35em;
   background: ${BRAND_WHITE};
+  border-radius: 2px;
 `;
 
 Filter.SelectWrapper = styled.span`
@@ -82,4 +83,5 @@ Filter.SelectWrapper = styled.span`
   background: ${BRAND_PRIMARY};
   color: ${BRAND_WHITE};
   box-shadow: 0 0.32em 2em rgba(153, 153, 153, .1);
+  border-radius: 2px;
 `;

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BRAND_WHITE } from '../../settings/_colors';
+import { BRAND_WHITE } from '../../../settings/_colors';
 
 export default function NavBar() {
   return (
     <NavBar.Wrapper>
-      <h3>Movie Chat Application</h3>
+      <h4>Movie Chat Application</h4>
     </NavBar.Wrapper>
   );
 }
@@ -17,7 +17,7 @@ NavBar.Wrapper = styled.nav`
   align-items: center;
   background: ${BRAND_WHITE};
 
-  h3 {
+  h4 {
     margin: 0;
     padding-left: 1em;
   }

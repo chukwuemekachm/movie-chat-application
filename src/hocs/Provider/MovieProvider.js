@@ -29,7 +29,6 @@ export default function MovieProvider({ children }) {
   function filterMoviesByGenre(genre) {
     let filteredMovies;
 
-
     if (searchTerm.length) {
       filteredMovies = filterMovies(genre, searchTerm);
     } else {

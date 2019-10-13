@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BRAND_WHITE, SECONDARY_WHITE } from '../../settings/_colors';
-import { formatRuntime } from '../../utils';
+import { BRAND_WHITE, SECONDARY_WHITE } from '../../../settings/_colors';
+import { formatRuntime } from '../../../utils';
 
 function Cell({ children }) {
   return (

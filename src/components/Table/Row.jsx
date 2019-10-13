@@ -62,6 +62,6 @@ Row.Items = styled.ul`
   }
 
   li:nth-child(6) {
-    width: 300px;
+    width: 250px;
   }
 `;

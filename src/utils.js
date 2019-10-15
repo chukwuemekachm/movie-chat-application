@@ -4,3 +4,7 @@ export function formatRuntime(runtime) {
 
   return `${hrs}h ${mins}m`;
 }
+
+export function formatMovieID(title, runtime) {
+  return `${title.replace(/ /g, '-').replace(/:/g, '').replace(/'/g, '').trim().toLowerCase()}-${runtime}`;
+}

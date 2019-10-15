@@ -16,7 +16,7 @@ function App() {
           <Router>
             <Switch>
               <Route path="/" exact component={Table} />
-              <Route path="/:movieTitle/comments" exact component={Comments} />
+              <Route path="/:movieID/comments" exact component={Comments} />
               <Redirect to="/" />
             </Switch>
           </Router>

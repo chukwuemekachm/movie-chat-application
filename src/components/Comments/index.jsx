@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import { withContext } from '../../hocs/Provider';
 import NavBar from './NavBar';
 import Message from './Message';
+import { fetchMovieComments } from '../../firebase';
+import Form from './Form';
 
-const data = [
-  'I hate it',
-  'Not bad but I wish it was longer. 2H is too short :(',
-  'Kept me on the edge of my seat the entire time'
-];
+function Comments(props) {
+  const { context: { _chat: { updateChat, chats } } } = props;
+  const { movieID } = useParams();
 
-function Comments() {
+  useEffect(function () {
+    fetchMovieComments(movieID, updateChat);
+  }, []);
+
+  const data = chats[movieID] || [];
+
   return (
     <Comments.Wrapper>
       <NavBar />
       <div className="messages">
         {
-          data.map(message => <Message message={message} />)
+          data.map(({ body }) => <Message message={body} key={body} />)
         }
       </div>
+      <Form movieID={movieID} />
     </Comments.Wrapper>
   );
 }
@@ -26,6 +33,8 @@ function Comments() {
 Comments.Wrapper = styled.div`
   .messages {
     padding: 1em 2em;
+    height: calc(100vh - 178px);
+    overflow-y: auto;
   }
 `;
 

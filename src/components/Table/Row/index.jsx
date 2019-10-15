@@ -1,25 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { BRAND_WHITE, SECONDARY_WHITE } from '../../../settings/_colors';
-import { formatRuntime } from '../../../utils';
+import { formatRuntime, formatMovieID } from '../../../utils';
+import Cell from '../Cell';
 
-function Cell({ children }) {
-  return (
-    <Cell.Wrapper>{children}</Cell.Wrapper>
-  );
-}
-
-Cell.Wrapper = styled.li``;
-
-export default function Row(props) {
+function Row(props) {
   const { title, year, runtime, revenue, rating, genre } = props;
+  const history = useHistory();
+
   return (
-    <Row.Wrapper>
+    <Row.Wrapper onClick={() => history.push(`/${formatMovieID(title, runtime)}/comments`, { title })}>
       <Row.Items>
         <Cell>{title}</Cell>
         <Cell>{year}</Cell>
         <Cell>{formatRuntime(runtime)}</Cell>
-        <Cell>${revenue}</Cell>
+        <Cell>{revenue ? `$${revenue}` : 'N/A'}</Cell>
         <Cell>{rating}</Cell>
         <Cell>{genre.join(', ')}</Cell>
       </Row.Items>
@@ -65,3 +61,5 @@ Row.Items = styled.ul`
     width: 250px;
   }
 `;
+
+export default Row;

@@ -1,16 +1,19 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BRAND_WHITE, BRAND_PRIMARY } from '../../../settings/_colors';
 
 export default function NavBar() {
+  const { state: { title } } = useLocation();
+
   return (
     <NavBar.Wrapper>
       <h4>
         <Link to="/">
           <i className="icon ion-md-arrow-back" />
         </Link>
-        Promethus Comments
+        {title} Comments
       </h4>
     </NavBar.Wrapper>
   );

@@ -3,11 +3,19 @@ import React, { createContext, useState } from 'react';
 export const ChatContext = createContext({});
 
 export default function ChatProvider({ children }) {
-  const [chat, setChat] = useState({});
+  const [chats, setChat] = useState({});
+
+  function updateChat(movieTitle, chats) {
+    setChat({
+      ...chats,
+      [movieTitle]: chats,
+    });
+  }
 
   function createContextValue() {
     return {
-      chat,
+      chats,
+      updateChat,
     };
   }
 
